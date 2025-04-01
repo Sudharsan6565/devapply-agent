@@ -2,6 +2,7 @@
 
 from core.session import manual_login, launch_with_cookies, cookies_exist
 from core.job_search import find_jobs
+from ui import launch_ui
 
 def main():
     if cookies_exist():
@@ -19,11 +20,16 @@ def main():
             print("🟢 Logged in with saved cookies.\n")
 
             jobs = find_jobs(page, "AWS Cloud Engineer", location="Remote", easy_apply_only=True)
-            print(f"\n✅ Found {len(jobs)} matching jobs:\n")
-            for job in jobs:
-                print(f"💼 {job['title']} @ {job['company']} [{job['location']}] — {job['posted']}")
-                print(f"🔗 {job['url']}")
-                print(f"⚡ Easy Apply: {job['easy_apply']}\n")
+
+            if jobs:
+                print(f"\n✅ Found {len(jobs)} matching jobs:\n")
+                for job in jobs:
+                    print(f"💼 {job['title']} @ {job['company']} [{job['location']}] — {job['posted']}")
+                    print(f"🔗 {job['url']}")
+                    print(f"⚡ Easy Apply: {job['easy_apply']}\n")
+                launch_ui(jobs)
+            else:
+                print("❌ No jobs found. Nothing to display.")
 
             browser.close()
 

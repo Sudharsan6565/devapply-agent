@@ -14,8 +14,13 @@ def find_jobs(page, keyword, location="Remote", easy_apply_only=False):
 
     # Visit search URL
     page.goto(url)
-    print("🛑 Debug Pause: Inspect the browser and confirm job cards are visible.")
-    input("🔍 Hit Enter after you visually confirm jobs are loaded...")
+    print("⏳ Waiting for job cards to load...")
+    try:
+        page.wait_for_selector("div.job-card-container", timeout=15000)
+        print("✅ Job cards loaded.")
+    except:
+        print("⚠️ Job cards not detected — page may be blank or slow.")
+
 
     dump_html(page.content(), "debug_jobs_page.html")
     scroll_full_page(page, steps=3)
