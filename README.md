@@ -118,7 +118,7 @@ Do not fork, redistribute, or publish without permission.
 ## 💬 Author
 
 Made with Code Red ☕ + Playwright by [Sudharsan](https://github.com/Sudharsan6565)  
-→ Also check: [aws.sudharsan17.online](https://aws.sudharsan17.online) – AWS Assistant on mobile.
+→ Also check: [aws.sudharsan17.online][sudharsan17.online](https://aws.sudharsan17.online) – AWS Assistant on mobile.
 
 ---
 
